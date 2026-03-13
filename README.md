@@ -85,3 +85,14 @@ SMTP2 --> MailServer
 SMTP3 --> MailServer
 
 LaravelBackend --> MySQL
+```
+---
+
+## Author
+
+Md Atikur Rahman  
+Full Stack Developer
+
+GitHub: https://github.com/atikurrahman1587
+
+LinkedIn: https://www.linkedin.com/in/atikurrahman1587
