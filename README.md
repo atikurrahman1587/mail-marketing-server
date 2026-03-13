@@ -1,14 +1,87 @@
-# Mail Marketing Server
+# Redmo Mail – Multi SMTP Email Marketing Platform
 
-It is a mail marketing server. You can have multiple SMTP servers.
-For example you have 5 active SMTP servers and you send 10 mails. Then every 2 mails are sent by 1 SMTP server. And suppose if the mail limit of 1st SMTP server is 1 then 1 mail will be sent by 1st SMTP and if 3 mails will be sent by 2nd SMTP server.
+Redmo Mail is a scalable email marketing platform designed to solve the common problem of SMTP sending limits and spam detection when sending bulk emails.
 
-### Admin Dashboard
-<p align="center">
-  <img src="https://github.com/atikurrahman1587/mail-marketing-server/blob/main/Dashboard.png?raw=true" alt="accessibility text">
-</p>
+The system allows multiple SMTP servers to be configured and automatically switches between them when one server reaches its sending limit.
 
-### Send Mail
-<p align="center">
-  <img src="https://github.com/atikurrahman1587/mail-marketing-server/blob/main/Mail-Send.png?raw=true" alt="accessibility text">
-</p>
+---
+
+## Features
+
+### Multi SMTP Server Rotation
+
+- Configure multiple SMTP servers
+- Set sending limits
+- Automatic SMTP switching
+- Load-balanced email sending
+
+---
+
+### Bulk Email Sending
+
+- Send emails to multiple recipients
+- Support for large campaigns
+- Send immediately or schedule later
+
+---
+
+### Dynamic Email Campaign
+
+Upload Excel files containing email lists.
+
+Example:
+
+| Name | Email |
+|-----|------|
+| Rahim | rahim@email.com |
+
+Use dynamic variables:
+
+Hello {name}
+
+
+---
+
+### SMTP Management
+
+Configure SMTP servers with:
+
+- SMTP host
+- Port
+- Username
+- Password
+- Encryption
+- Sender email
+- Sending limits
+
+---
+
+### Email Dashboard
+
+- Total email statistics
+- Delivery reports
+- Failed email tracking
+- Monthly analytics
+
+---
+
+## System Architecture
+
+```mermaid
+graph TD
+
+User --> EmailDashboard
+EmailDashboard --> LaravelBackend
+
+LaravelBackend --> QueueSystem
+QueueSystem --> MailWorker
+
+MailWorker --> SMTP1
+MailWorker --> SMTP2
+MailWorker --> SMTP3
+
+SMTP1 --> MailServer
+SMTP2 --> MailServer
+SMTP3 --> MailServer
+
+LaravelBackend --> MySQL
